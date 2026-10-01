@@ -8,27 +8,38 @@
 - AE2WTLib 19.5.1（如果 Maven 解析失败）
 - AE2 19.2.18（如果 Maven 解析失败）
 
-Installation information
-=======
+## 功能 / Features
 
-This template repository can be directly cloned to get you started with a new
-mod. Simply create a new repository cloned from this one, by following the
-instructions provided by [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+- ✅ 在 WCWT 的样板编码终端里，通过 JEI 的 “+” 按钮直接传输合金炉配方
+- ✅ 复用 UselessMod 的完整转换逻辑，支持模具、标签、动态输入等全部特性
 
-Once you have your clone, simply open the repository in the IDE of your choice. The usual recommendation for an IDE is either IntelliJ IDEA or Eclipse.
+- ✅ Transfer Alloy Furnace recipes from JEI into WCWT's pattern encoding terminal via the "+" button
+- ✅ Reuses UselessMod's full conversion pipeline: molds, tags, dynamic inputs, and more
 
-If at any point you are missing libraries in your IDE, or you've run into problems you can
-run `gradlew --refresh-dependencies` to refresh the local cache. `gradlew clean` to reset everything 
-{this does not affect your code} and then start the process again.
+## 使用 / Usage
 
-Mapping Names:
-============
-By default, the MDK is configured to use the official mapping names from Mojang for methods and fields 
-in the Minecraft codebase. These names are covered by a specific license. All modders should be aware of this
-license. For the latest license text, refer to the mapping file itself, or the reference copy here:
-https://github.com/NeoForged/NeoForm/blob/main/Mojang.md
+1. 打开 WCWT 的无线综合工作终端
+2. 在 JEI 里找到任意一条万象合金炉配方
+3. 点击 “+” 按钮把配方传输到编码终端
+4. 点“编码”按钮，输出槽里就会得到万象样板
+***
+1. Open the WCWT Wireless Comprehensive Work Terminal
+2. Find any Alloy Furnace recipe in JEI
+3. Click the "+" button to transfer the recipe into the encoding terminal
+4. Press "Encode" — the output slot will contain an Omniversal Pattern
 
-Additional Resources: 
-==========
-Community Documentation: https://docs.neoforged.net/  
-NeoForged Discord: https://discord.neoforged.net/
+## 致谢 / Credits
+
+本项目基于以下模组的公开 API 进行桥接，它们的代码均在 MIT 协议下发布：
+
+This project bridges the public APIs of the following mods, all licensed under MIT:
+
+- AE2 WCWT by lhy
+  https://github.com/lhy512103/AE2-WCWT
+
+- UselessMod by SorrowMist
+  https://github.com/SorrowMist/UselessMod
+
+- Applied Energistics 2
+  https://github.com/AppliedEnergistics/Applied-Energistics-2
+
