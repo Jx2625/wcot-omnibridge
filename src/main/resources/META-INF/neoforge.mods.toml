@@ -1,0 +1,58 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+description = '''
+Bridges UselessMod's Omniversal Patterns into AE2 WCWT's pattern encoding terminal.
+'''
+authors="muyu"
+
+[[mixins]]
+config = "wcot_omnibridge.mixins.json"
+
+# ========== NeoForge ==========
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+# ========== Minecraft ==========
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+# ========== AE2 ==========
+[[dependencies.${mod_id}]]
+modId="ae2"
+type="required"
+versionRange="[19.2.0,)"
+ordering="AFTER"
+side="BOTH"
+reason="Required for pattern encoding APIs used by both WCWT and UselessMod."
+
+# ========== WCWT ==========
+[[dependencies.${mod_id}]]
+modId="wcwt"
+type="required"
+versionRange="[1.3.1,)"
+ordering="AFTER"
+side="BOTH"
+reason="This mod patches WCWT's pattern encoding terminal to support Omniversal Patterns."
+
+# ========== UselessMod ==========
+[[dependencies.${mod_id}]]
+modId="useless_mod"
+type="required"
+versionRange="[1.21.1-2.3.6.4,)"
+ordering="AFTER"
+side="BOTH"
+reason="This mod converts UselessMod's Omniversal Patterns during WCWT encoding."

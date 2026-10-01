@@ -1,0 +1,114 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.74'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+    withSourcesJar()
+}
+
+neoForge {
+    version = neo_version
+
+    accessTransformers = files('src/main/resources/META-INF/accesstransformer.cfg')
+
+    mods {
+        create(mod_id) {
+            sourceSet sourceSets.main
+        }
+    }
+
+    runs {
+        client {
+            client()
+            gameDirectory = file('run/client')
+        }
+        server {
+            server()
+            gameDirectory = file('run/server')
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "NeoForged"
+        url = "https://maven.neoforged.net/releases"
+    }
+    maven {
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+        content {
+            includeGroup "appeng"
+            includeGroup "org.appliedenergistics"
+            includeGroup "de.mari_023"
+        }
+    }
+    maven {
+        name = "BlameJared"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "Curse Maven"
+        url = "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    // NeoForge（moddev 插件自动处理，不需要手动加）
+
+    // AE2
+    implementation "org.appliedenergistics:appliedenergistics2:${ae2_version}"
+
+    // AE2WTLib
+    implementation "de.mari_023:ae2wtlib:${ae2wtlib_version}"
+
+    // JEI
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+
+    // WCWT 和 UselessMod（放项目libs/ 目录），塞入对应版本号的两个mod即可（需要改名）
+    implementation name: 'wcwt-1.3.10'
+    implementation name: 'useless_mod-1.21.1-2.4.5.3'
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description,
+    ]
+    inputs.properties replaceProperties
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

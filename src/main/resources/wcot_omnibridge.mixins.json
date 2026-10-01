@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "com.muyu.wcot.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "wcot_omnibridge.refmap.json",
+  "mixins": [
+    "WcwtEncodePatternMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
