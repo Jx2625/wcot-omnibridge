@@ -39,7 +39,3 @@ This project bridges the public APIs of the following mods, all licensed under M
 
 - UselessMod by SorrowMist
   https://github.com/SorrowMist/UselessMod
-
-- Applied Energistics 2
-  https://github.com/AppliedEnergistics/Applied-Energistics-2
-
